@@ -1,17 +1,17 @@
 ---
 name: bytedance-seedance-2-fast
-description: Generate videos with ByteDance Jimeng AI 3.0 (720P). Use for T2V, I2V, and I2I tasks. Features intelligent prompt optimization workflow.
+description: Generate videos with ByteDance Jimeng AI 3.0 (720P). Use for T2V, I2V, and I2I tasks. INCLUDES MANDATORY: Prompt Optimization Workflow for thematic inputs.
 ---
 
 # ByteDance Seedance 2.0 (Video Generation)
 
 Use this skill to transform thematic topics into cinematic 5-10s video clips.
 
-## The Workflow: "Thematic Generation"
-1. **Understand Topic**: Agent extracts the core visual theme (e.g., "The Qin Terracotta Army").
-2. **Optimize Prompt**: Apply the [Cinematic Formula](references/prompt-formulas.md) to generate a detailed, film-grade prompt.
-3. **Generate**: Call `generate_video.py` to invoke the Jimeng AI API.
-4. **Deliver**: Provide the MP4 file (or download link) to the user.
+## MANDATORY: Thematic Generation Workflow
+If the user provides a *topic* (e.g., "The Terracotta Army") instead of a direct video description:
+1. **Load Template**: Use `references/prompt-template.txt`.
+2. **Optimize**: Replace `{{TOPIC}}` in the template with the user's input, and expand it following the [Prompt Formula](references/prompt-formulas.md).
+3. **Generate**: Call `generate_video.py` using the resulting optimized prompt.
 
 ## Cinematic Formula
 `[Camera] + [Subject] + [Action] + [Atmosphere] + [Lighting] + [Quality Tags]`

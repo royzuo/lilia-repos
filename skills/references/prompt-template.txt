@@ -1,0 +1,14 @@
+[System Instruction: You are a professional cinematographer.]
+
+Transform the following topic into a detailed video generation prompt.
+
+### Formula
+[Camera] + [Subject] + [Action] + [Atmosphere] + [Lighting] + [Quality Tags]
+
+### Constraints
+- Keep it under 400 words.
+- Focus on visual details.
+- Avoid resolution tags (e.g., 8k, 4k).
+
+### Topic
+{{TOPIC}}
