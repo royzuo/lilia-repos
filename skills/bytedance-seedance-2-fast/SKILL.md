@@ -1,6 +1,6 @@
 ---
 name: bytedance-seedance-2-fast
-description: Generate videos with ByteDance Jimeng AI 3.0 (720P). Use for T2V, I2V, and I2I tasks. INCLUDES MANDATORY: Prompt Optimization Workflow for thematic inputs.
+description: Generate videos with ByteDance Jimeng AI 3.0 (720P). Use for T2V, I2I tasks. INCLUDES MANDATORY: Automated Prompt Optimization Workflow.
 ---
 
 # ByteDance Seedance 2.0 (Video Generation)
@@ -8,26 +8,20 @@ description: Generate videos with ByteDance Jimeng AI 3.0 (720P). Use for T2V, I
 Use this skill to transform thematic topics into cinematic 5-10s video clips.
 
 ## MANDATORY: Thematic Generation Workflow
-If the user provides a *topic* (e.g., "The Terracotta Army") instead of a direct video description:
-1. **Load Template**: Use `references/prompt-template.txt`.
-2. **Optimize**: Replace `{{TOPIC}}` in the template with the user's input, and expand it following the [Prompt Formula](references/prompt-formulas.md).
-3. **Generate**: Call `generate_video.py` using the resulting optimized prompt.
+If the user provides a *topic* (e.g., "The Terracotta Army"):
+1. **Prepare Prompt**: Run `python3 scripts/optimize_prompt.py "<topic>"` to get the template structure.
+2. **Expand**: Fill in the `[Camera]`, `[Subject]`, etc., following the [Prompt Formula](references/prompt-formulas.md).
+3. **Generate**: Call `python3 scripts/generate_video.py -p "<Finalized Prompt>"` to invoke the Jimeng AI API.
 
 ## Cinematic Formula
 `[Camera] + [Subject] + [Action] + [Atmosphere] + [Lighting] + [Quality Tags]`
 
-*   **Camera**: Low-angle tracking, wide shot, close-up, etc.
-*   **Subject**: Clear, descriptive nouns (e.g., "Terracotta Army").
-*   **Action**: Dynamic movement (e.g., "dust dancing", "columns moving").
-*   **Atmosphere**: Mood-setting (e.g., "solemn", "epic").
-*   **Lighting**: Specific sources (e.g., "chiaroscuro", "dramatic sunset").
-*   **Quality Tags**: Cinematic texture, authentic materials, masterful composition.
-
 ## Usage
 
 ```bash
-# Basic usage
-python3 scripts/generate_video.py -p "<Optimized Prompt>" -o output.mp4
+# Workflow: 
+# 1. python3 scripts/optimize_prompt.py "Your Topic"
+# 2. python3 scripts/generate_video.py -p "<Generated Prompt>" -o output.mp4
 ```
 
-See [API Docs](references/api-docs.md) for endpoint config, error handling, and resolution/duration specs.
+See [API Docs](references/api-docs.md) for endpoint config.
